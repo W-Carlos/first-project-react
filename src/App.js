@@ -1,16 +1,33 @@
 import React from 'react'
 
-import {Container, H1, P} from './styles'
+import {
+  Container, 
+  Image, 
+  ContainerItens,
+  H1, 
+  InputLabel, 
+  Input,
+  Button,
+} from './styles'
 
 // JSX = Mistura html com javascript
 const App = () => {
-  const hello = "Hello React"
 
   return (
     <Container>
-      <H1>{hello}</H1>
-      <P>Meu primeiro projeto com ReactJS</P>
-      <P>Meu segundo paragrafo</P>
+      <Image></Image>
+
+      <ContainerItens>
+        <H1>Olá</H1>
+        <InputLabel>Nome</InputLabel>
+        <Input placeholder="Digite seu nome"/>
+
+        <InputLabel>Idade</InputLabel>
+        <Input placeholder="Digite sua idade"/>
+
+        <Button>Cadastrar</Button>
+      </ContainerItens>
+      
     </Container>)
 }
 
