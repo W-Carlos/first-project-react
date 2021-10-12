@@ -1,15 +1,17 @@
 import React from 'react'
 
+import {Container, H1, P} from './styles'
+
 // JSX = Mistura html com javascript
 const App = () => {
   const hello = "Hello React"
 
   return (
-    <div>
-      <h1>{hello}</h1>
-      <h2>{3 * 2}</h2>
-      <p>Meu primeiro projeto com ReactJS</p>
-    </div>)
+    <Container>
+      <H1>{hello}</H1>
+      <P>Meu primeiro projeto com ReactJS</P>
+      <P>Meu segundo paragrafo</P>
+    </Container>)
 }
 
 export default App
