@@ -1,4 +1,7 @@
 import React, {useState, useRef} from 'react'
+
+import axios from 'axios'
+
 import People from './assets/people.svg'
 import Arrow from './assets/arrow.svg'
 import Trash from './assets/trash.svg'
@@ -22,15 +25,24 @@ const App = () => {
   const inputAge = useRef()
   // Um estado no Raect é IMUTÁVEL
 
-  function addNewUser(){
-    setUsers([
+  async function addNewUser(){
+
+    // Conectando com o Back-and
+    const data = await axios.post("http://localhost:3001/users", {
+      name: inputName.current.value, 
+      age: inputAge.current.value
+    })
+
+    console.log(data)
+
+    /*setUsers([
       ...users, 
       {
         id: Math.random(), 
         name: inputName.current.value, 
         age: inputAge.current.value
       }
-    ])
+    ])*/
   }
 
   // Deletar usuarios
