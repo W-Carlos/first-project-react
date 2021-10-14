@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import People from './assets/people.svg'
 import Arrow from './assets/arrow.svg'
 import Trash from './assets/trash.svg'
@@ -18,21 +18,19 @@ import {
 const App = () => {
   // REACT HOOKS => FERRAMENTAS AUXILIARES
   const [users, setUsers] = useState([])
-  const [name, setName] = useState()
-  const [age, setAge] = useState()
+  const inputName = useRef()
+  const inputAge = useRef()
   // Um estado no Raect é IMUTÁVEL
 
   function addNewUser(){
-    setUsers([{id: Math.random(), name, age}])
-    
-  }
-
-  function changeInputName(event){
-    setName(event.target.value)
-  }
-
-  function changeInputAge(event){
-    setAge(event.target.value)
+    setUsers([
+      ...users, 
+      {
+        id: Math.random(), 
+        name: inputName.current.value, 
+        age: inputAge.current.value
+      }
+    ])
   }
 
   return (
@@ -43,10 +41,10 @@ const App = () => {
         <H1>Olá</H1>
         
         <InputLabel>Nome</InputLabel>
-        <Input onChange={changeInputName} placeholder="Digite seu nome"/>
+        <Input ref={inputName} placeholder="Digite seu nome"/>
 
         <InputLabel>Idade</InputLabel>
-        <Input onChange={changeInputAge} placeholder="Digite sua idade"/>
+        <Input ref={inputAge} placeholder="Digite sua idade"/>
 
         <Button onClick={addNewUser}>
           Cadastrar <img alt="seta" src={Arrow}/>
