@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import People from './assets/people.svg'
 import Arrow from './assets/arrow.svg'
 import Trash from './assets/trash.svg'
@@ -16,9 +16,24 @@ import {
 
 // JSX = Mistura html com javascript
 const App = () => {
-  const users = [
-    {id: Math.random(), name: "Carlos", age: 25}, 
-    {id: Math.random(), name: "Maria", age: 30}]
+  // REACT HOOKS => FERRAMENTAS AUXILIARES
+  const [users, setUsers] = useState([])
+  const [name, setName] = useState()
+  const [age, setAge] = useState()
+  // Um estado no Raect é IMUTÁVEL
+
+  function addNewUser(){
+    setUsers([{id: Math.random(), name, age}])
+    
+  }
+
+  function changeInputName(event){
+    setName(event.target.value)
+  }
+
+  function changeInputAge(event){
+    setAge(event.target.value)
+  }
 
   return (
     <Container>
@@ -28,12 +43,14 @@ const App = () => {
         <H1>Olá</H1>
         
         <InputLabel>Nome</InputLabel>
-        <Input placeholder="Digite seu nome"/>
+        <Input onChange={changeInputName} placeholder="Digite seu nome"/>
 
         <InputLabel>Idade</InputLabel>
-        <Input placeholder="Digite sua idade"/>
+        <Input onChange={changeInputAge} placeholder="Digite sua idade"/>
 
-        <Button>Cadastrar <img alt="seta" src={Arrow}/></Button>
+        <Button onClick={addNewUser}>
+          Cadastrar <img alt="seta" src={Arrow}/>
+        </Button>
 
         <ul>
           { users.map((user) => (
