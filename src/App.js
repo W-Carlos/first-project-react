@@ -33,6 +33,14 @@ const App = () => {
     ])
   }
 
+  // Deletar usuarios
+  function deleteUser(userId){
+    const newUsers = users.filter((user) => user.id !== userId)
+
+    setUsers(newUsers)
+
+  }
+
   return (
     <Container>
       <Image alt="logo-imagen" src={People}/>
@@ -56,7 +64,9 @@ const App = () => {
             <User key={user.id}>
               <p>{user.name}</p>
               <p>{user.age}</p>
-              <button><img src={Trash} alt="deletar"/></button>
+              <button onClick={() => deleteUser(user.id)}>
+                <img src={Trash} alt="deletar"/>
+              </button>
             </User>
           ))}
         </ul>
