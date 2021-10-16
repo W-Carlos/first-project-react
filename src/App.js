@@ -28,17 +28,17 @@ const App = () => {
   async function addNewUser(){
 
     // Conectando com o Back-and
-    const { data: newUser } = await axios.post("http://localhost:3001/users", {
+    /*const { data: newUser } = await axios.post("http://localhost:3001/users", {
       name: inputName.current.value, 
       age: inputAge.current.value
     })
 
-    console.log(newUser)
+    setUsers([...users, newUser])*/
 
-    setUsers([
-      ...users, 
-      newUser
-    ])
+    // Recuperando usuarios no backend
+    const {data: newUsers} = await axios.get("http://localhost:3001/users")
+
+    setUsers(newUsers)
   }
 
   // Deletar usuarios
