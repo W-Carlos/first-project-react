@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 
 import axios from 'axios'
 
@@ -28,18 +28,28 @@ const App = () => {
   async function addNewUser(){
 
     // Conectando com o Back-and
-    /*const { data: newUser } = await axios.post("http://localhost:3001/users", {
+    const { data: newUser } = await axios.post("http://localhost:3001/users", {
       name: inputName.current.value, 
       age: inputAge.current.value
     })
 
-    setUsers([...users, newUser])*/
+    setUsers([...users, newUser])
 
-    // Recuperando usuarios no backend
-    const {data: newUsers} = await axios.get("http://localhost:3001/users")
-
-    setUsers(newUsers)
   }
+
+  //React Hook UseEffect. 
+  // Chamando todos os usuarios quando a aplicação é iniciada.
+  useEffect(() => {
+    // Recuperando usuarios no backend
+    async function fatchUsers(){
+      const {data: newUsers} = await axios.get("http://localhost:3001/users")
+
+      setUsers(newUsers)
+    }
+
+    fatchUsers()
+
+  }, [])
 
   // Deletar usuarios
   function deleteUser(userId){
@@ -48,6 +58,8 @@ const App = () => {
     setUsers(newUsers)
 
   }
+
+
 
   return (
     <Container>
