@@ -1,9 +1,10 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 
 import axios from 'axios'
 
 import People from '../../assets/people.svg'
 import Arrow from '../../assets/arrow.svg'
+import Trash from '../../assets/trash.svg'
 
 import {
   Container, 
@@ -13,6 +14,7 @@ import {
   InputLabel, 
   Input,
   Button,
+  User,
 } from './styles'
 
 // JSX = Mistura html com javascript
@@ -23,6 +25,21 @@ const App = () => {
   const inputAge = useRef()
   // Um estado no Raect é IMUTÁVEL
 
+  
+
+  //React Hook UseEffect. 
+  // Chamando todos os usuarios quando a aplicação é iniciada.
+  useEffect(() => {
+    // Recuperando usuarios no backend
+    async function fatchUsers(){
+      const {data: newUsers} = await axios.get("http://localhost:3001/users")
+
+      setUsers(newUsers)
+    }
+
+    fatchUsers()
+
+  }, [])
 
   async function addNewUser(){
 
@@ -33,6 +50,15 @@ const App = () => {
     })
 
     setUsers([...users, newUser])
+
+  }
+
+  // Deletar usuarios
+  async function deleteUser(userId){
+    await axios.delete(`http://localhost:3001/users/${userId}`)
+    const newUsers = users.filter((user) => user.id !== userId)
+
+    setUsers(newUsers)
 
   }
 
@@ -52,6 +78,19 @@ const App = () => {
         <Button onClick={addNewUser}>
           Cadastrar <img alt="seta" src={Arrow}/>
         </Button>
+
+        <ul>
+          { users.map((user) => (
+            // Para iterar itens no react é necessario ter uma key
+            <User key={user.id}>
+              <p>{user.name}</p>
+              <p>{user.age}</p>
+              <button onClick={() => deleteUser(user.id)}>
+                <img src={Trash} alt="deletar"/>
+              </button>
+            </User>
+          ))}
+        </ul>
 
       </ContainerItens>
       
