@@ -25,17 +25,7 @@ const App = () => {
   const inputAge = useRef()
   // Um estado no Raect é IMUTÁVEL
 
-  async function addNewUser(){
-
-    // Conectando com o Back-and
-    const { data: newUser } = await axios.post("http://localhost:3001/users", {
-      name: inputName.current.value, 
-      age: inputAge.current.value
-    })
-
-    setUsers([...users, newUser])
-
-  }
+  
 
   //React Hook UseEffect. 
   // Chamando todos os usuarios quando a aplicação é iniciada.
@@ -51,15 +41,26 @@ const App = () => {
 
   }, [])
 
+  async function addNewUser(){
+
+    // Conectando com o Back-and
+    const { data: newUser } = await axios.post("http://localhost:3001/users", {
+      name: inputName.current.value, 
+      age: inputAge.current.value
+    })
+
+    setUsers([...users, newUser])
+
+  }
+
   // Deletar usuarios
-  function deleteUser(userId){
+  async function deleteUser(userId){
+    await axios.delete(`http://localhost:3001/users/${userId}`)
     const newUsers = users.filter((user) => user.id !== userId)
 
     setUsers(newUsers)
 
   }
-
-
 
   return (
     <Container>
