@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './containers/Home';
-import Users from './containers/Users'
-import GlobalStyle from './globalStyle';
+import GlobalStyle from './styles/globalStyle';
+import Routes from './routes'
 
 // No react os componentes são como sanduiche, um tem que está dentro do outro
 ReactDOM.render(
     <>
-        <Users/> 
+        <Routes/> 
         <GlobalStyle/>
     </>, 
     document.getElementById('root')
