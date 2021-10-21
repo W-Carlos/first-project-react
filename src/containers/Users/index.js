@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useHistory } from "react-router-dom"
 
 import axios from 'axios'
 
@@ -21,7 +22,7 @@ const Users = () => {
   const [users, setUsers] = useState([])
   // Um estado no Raect é IMUTÁVEL
 
-  
+  const history = useHistory()
 
   //React Hook UseEffect. 
   // Chamando todos os usuarios quando a aplicação é iniciada.
@@ -46,6 +47,10 @@ const Users = () => {
 
   }
 
+  function goBackPage(){
+    history.push('/')
+  }
+
   return (
     <Container>
       <Image alt="logo-imagen" src={Avatar}/>
@@ -66,7 +71,7 @@ const Users = () => {
           ))}
         </ul>
 
-        <Button to="/">
+        <Button onClick={goBackPage}>
           <img alt="seta" src={Arrow}/> Voltar 
         </Button>
 

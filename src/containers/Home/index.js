@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react'
+import { useHistory } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -19,10 +20,10 @@ import {
 const App = () => {
   // REACT HOOKS => FERRAMENTAS AUXILIARES
   const [users, setUsers] = useState([])
+  const history = useHistory()
   const inputName = useRef()
   const inputAge = useRef()
   // Um estado no Raect é IMUTÁVEL
-
 
   async function addNewUser(){
 
@@ -33,6 +34,8 @@ const App = () => {
     })
 
     setUsers([...users, newUser])
+
+    history.push('/usuarios')
 
   }
 
@@ -49,7 +52,7 @@ const App = () => {
         <InputLabel>Idade</InputLabel>
         <Input ref={inputAge} placeholder="Digite sua idade"/>
 
-        <Button to="/usuarios" onClick={addNewUser}>
+        <Button onClick={addNewUser}>
           Cadastrar <img alt="seta" src={Arrow}/>
         </Button>
 
