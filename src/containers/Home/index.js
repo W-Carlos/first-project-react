@@ -6,11 +6,12 @@ import axios from 'axios'
 import People from '../../assets/people.svg'
 import Arrow from '../../assets/arrow.svg'
 
+import H1 from '../../components/Title'
+
 import {
   Container, 
   Image, 
   ContainerItens,
-  H1, 
   InputLabel, 
   Input,
   Button,
