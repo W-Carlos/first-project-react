@@ -6,7 +6,8 @@ export const ContainerItens = styled.div `
     padding: 50px 36px;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+
 
     ${ props => props.isBlur && `
         backdrop-filter: blur(45px);
