@@ -1,4 +1,61 @@
-# Getting Started with Create React App
+> ## 💻 Projeto
+Esta é uma aplicação simples consumindo a API do back-end, onde você pode fazer uma lista de usuários adicionando o nome e a idade. Tambem é possivel excluir qualquer posição da lista. O objetivo desse projeto é a fixação de conceitos de React.js, Consumo de APIs e Lógica de Programação.  
+
+> ## 📸 Demo
+<img src="./src/assets/first-project-react.gif">
+
+> ## 🚀 Tecnologias
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+* [React](https://pt-br.reactjs.org/)
+* [Node](https://nodejs.org/en/)
+* [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
+* [Styled-components](https://styled-components.com/)
+* [Axios](https://www.npmjs.com/package/axios)
+* [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+
+> ## Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/W-Carlos/first-project-react.git>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd first-project-react
+
+# Instale as dependências
+$ yarn
+# ou
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000> 
+
+#A página será recarregada se você fizer edições.Você também verá quaisquer erros no console.
+```
+
+>## 📄 Licença
+Este projeto está sob a licença MIT. Veja o arquivo <a href="https://github.com/W-Carlos/first-project-react/blob/master/LICENSE.md">LICENSE</a> para mais detalhes.
+
+---
+<p align="center">Feito por Wend Carlos 👋</p>
+
+
+
+
+
+
+
+
+
+
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,3 +125,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ -->
